@@ -1,0 +1,247 @@
+.tax-filters {
+  &__wrapper {
+    position: fixed;
+    bottom: 3vw;
+    background-color: black;
+    display: flex;
+    gap: 2.773vw;
+    padding: 1.387vw 3.55vw;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 1.331vw;
+    width: max-content;
+    align-self: flex-end;
+    margin: 0 auto;
+    color: white;
+    font-size: 0.776vw;
+    line-height: 1.054vw;
+    align-items: center;
+    font-weight: 400;
+    left: 0;
+    justify-content: space-between;
+    right: 0;z-index: 2;
+
+    @media (max-width: 1080px) {
+      min-width: 14vw;
+      font-size: 1.2vw;
+      line-height: 1.7vw;
+    }
+
+    @media (max-width: 800px) {
+      min-width: 28vw;
+      font-size: 1.8vw;
+      line-height: 2.2vw;
+      //margin-bottom: 4.226vw;
+    }
+
+    picture {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 0.867vw;
+      height: 0.867vw;
+      aspect-ratio: 1/1;
+
+      @media (max-width: 1080px) {
+        width: 1.2vw;
+        height: 1.2vw;
+      }
+
+      @media (max-width: 800px) {
+        width: 1.5vw;
+        height: 1.5vw;
+      }
+
+      @media (max-width: 600px) {
+        width: 2vw;
+        height: 2vw;
+      }
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+
+        &.close-icon {
+          scale: 3.5;
+          transition: filter 0.3s;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: black;
+      color: white;
+
+      picture img.close-icon {
+        filter: invert(1);
+      }
+    }
+  }
+
+  &__category-selector,
+  &__format-selector,
+  &__style-selector {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    column-gap: 20px;
+    z-index: 1000;
+
+    @media (max-width: 600px) {
+      //padding: 10vh 30px;
+    }
+  }
+
+  &__modal-content {
+    opacity: 0;
+    background: black;
+    width: 100%;
+    display: flex;
+    // width: max-content;
+    //max-width: 90%;
+    //max-height: 99%;
+    overflow-y: auto;
+    row-gap: 0;
+    text-align: center;
+    gap: 0.5vw;
+    justify-content: flex-start;
+    &::-webkit-scrollbar {
+        display: none;
+        width: 0.5vw;
+      }
+    
+      /* Track */
+      &::-webkit-scrollbar-track {
+        border-left: 1px solid grey;
+        background: #111111;
+      }
+    
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: grey;
+        display: flex;
+        width: 50%;
+      }
+    
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+  }
+
+  &__modal-items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: 100vh;
+    //flex-wrap: wrap;
+    gap: 1px;
+    text-align: center;
+    //gap: 25px;
+    justify-content: flex-start;
+    //padding: 1vw;
+    width: 100%;
+    margin: auto;
+
+    @media (max-width: 600px) {
+      //gap: 12px;
+    }
+  }
+
+  &__category-option {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column-reverse;
+    //width: calc(25% - 1px);
+    //aspect-ratio: 37/17;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    position: relative;
+    font-size: 2.083vw;
+
+    @media (max-width: 768px) {
+      //width: calc(33.33% - 1px);
+      font-size: 3.083vw;
+      //aspect-ratio: 19/6;
+    }
+
+    @media (max-width: 600px) {
+      //max-width: 45vw;
+      width: 100%;
+      //padding: 1vw;
+      font-size: 4.083vw;
+    }
+
+    picture:not(.tick) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: -1;
+      transition: 0.3s;
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .tick {
+        position: absolute;
+        bottom: .8vw;
+        opacity: 0;
+    }
+
+    &:hover {
+      picture:not(.tick) {
+        opacity: 1;
+      }
+    }
+  }
+
+  .selected {
+    picture {
+      opacity: 1;
+    }
+  }
+
+  .selected-tax-name {
+    position: fixed;
+    right: 3vw;
+    bottom: 3.5vw;
+    background-color: black;
+    padding: .5vw 1.5vw;
+    border-radius: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    z-index: 2;
+    user-select: none;
+
+    img {
+        filter: invert(1);
+        scale: 2;
+        cursor: pointer;
+    }
+  }
+}
