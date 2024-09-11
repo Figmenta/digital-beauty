@@ -70,9 +70,9 @@ const Navbar = ({ mainMenu, error }) => {
                     className="navbar__main-menu-item special-item"
                     //onClick={openContactModal}
                   >
-                    <a href="/" className="contact-modal-trigger">
+                    <Link href="/" className="contact-modal-trigger">
                       {menuItem.label}
-                    </a>
+                    </Link>
                   </li>
                 );
               }
