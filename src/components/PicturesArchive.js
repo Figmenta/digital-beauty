@@ -98,41 +98,43 @@ const PicturesArchive = ({ pictures, categories }) => {
   });
 
   useEffect(() => {
-    const container = document.querySelector(".pictures-archive");
+    setTimeout(() => {
+        const container = document.querySelector(".pictures-archive");
 
-    gsap.fromTo(
-      container,
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duracion: 0.5,
-      }
-    );
-
-    const pictures = document.querySelectorAll(
-      ".pictures-archive__column picture"
-    );
-
-    pictures.forEach((pic) => {
-      gsap.fromTo(
-        pic,
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duracion: 0.5,
-          delay: 0.3,
-          scrollTrigger: {
-            trigger: pic,
-            toggleActions: "play none none reverse",
-            start: "top bottom-=10%",
+        gsap.fromTo(
+          container,
+          {
+            opacity: 0,
           },
-        }
-      );
-    });
+          {
+            opacity: 1,
+            duracion: 0.5,
+          }
+        );
+    
+        const pictures = document.querySelectorAll(
+          ".pictures-archive__column picture"
+        );
+    
+        pictures.forEach((pic) => {
+          gsap.fromTo(
+            pic,
+            {
+              opacity: 0,
+            },
+            {
+              opacity: 1,
+              duracion: 0.5,
+              delay: 0.3,
+              scrollTrigger: {
+                trigger: pic,
+                toggleActions: "play none none reverse",
+                start: "top bottom-=10%",
+              },
+            }
+          );
+        });
+    }, 100)
   }, []);
 
   useEffect(() => {
