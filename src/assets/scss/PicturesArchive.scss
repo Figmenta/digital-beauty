@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   gap: 16px; // Espacio entre las imágenes
   font-family: $font;
+  opacity: 0;
 
   &__column {
     flex: 1; // Las columnas compartirán el espacio disponible
