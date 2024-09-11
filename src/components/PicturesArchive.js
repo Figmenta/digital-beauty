@@ -101,7 +101,7 @@ const PicturesArchive = ({ pictures, categories }) => {
     const container = document.querySelector(".pictures-archive");
 
     gsap.fromTo(
-      pic,
+      container,
       {
         opacity: 0,
       },
