@@ -98,6 +98,19 @@ const PicturesArchive = ({ pictures, categories }) => {
   });
 
   useEffect(() => {
+    const container = document.querySelector(".pictures-archive");
+
+    gsap.fromTo(
+      pic,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duracion: 0.5,
+      }
+    );
+
     const pictures = document.querySelectorAll(
       ".pictures-archive__column picture"
     );
@@ -127,8 +140,8 @@ const PicturesArchive = ({ pictures, categories }) => {
       setResponsive(window.innerWidth);
     });
     window.addEventListener("load", () => {
-        setResponsive(window.innerWidth);
-      });
+      setResponsive(window.innerWidth);
+    });
   }, []);
 
   return (
