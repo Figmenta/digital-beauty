@@ -117,7 +117,7 @@ const PicturesArchive = ({ pictures, categories }) => {
       );
 
       const pictures = document.querySelectorAll(
-        ".pictures-archive__column picture"
+        ".pictures-archive__picture"
       );
 
       pictures.forEach((pic) => {
@@ -134,11 +134,12 @@ const PicturesArchive = ({ pictures, categories }) => {
               trigger: pic,
               toggleActions: "play none none reverse",
               start: "top bottom-=10%",
+              markers: true
             },
           }
         );
       });
-    }, 100);
+    }, 500);
   }, []);
 
   useEffect(() => {
