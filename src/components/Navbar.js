@@ -6,6 +6,55 @@ import gsap from "gsap";
 import { useEffect, useState } from "react";
 
 const Navbar = ({ mainMenu, error }) => {
+  useEffect(() => {
+    var dataText = [
+      "Magic",
+      "Delicious",
+      "Divine",
+      "Enchanting",
+      "Ravishing",
+      "Heavenly",
+      "Ambrosial",
+      "Flavorful",
+      "Gratifying",
+      "Exquisite",
+      "Delightful",
+    ];
+
+    // Function to type one text in the typewriter
+    function typeWriter(text, i, fnCallback) {
+      // Check if text isn't finished yet
+      if (i < text.length) {
+        // Add next character to html element
+        document.querySelector("#typewriter").innerHTML =
+          text.substring(0, i + 1) + '<span aria-hidden="true"></span>';
+
+        // Wait for a while and call this function again for next character
+        setTimeout(function () {
+          typeWriter(text, i + 1, fnCallback);
+        }, 100);
+      }
+      // Text finished, call callback if there is
+      else if (typeof fnCallback == "function") {
+        // Call callback after timeout
+        setTimeout(fnCallback, 1500);
+      }
+    }
+
+    function StartTextAnimation(i) {
+      // Restart
+      if (i >= dataText.length) {
+        i = 0;
+      }
+      // Start typewriter animation for the current text
+      typeWriter(dataText[i], 0, function () {
+        StartTextAnimation(i + 1);
+      });
+    }
+
+    StartTextAnimation(0);
+  }, []);
+
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -47,7 +96,9 @@ const Navbar = ({ mainMenu, error }) => {
             <picture>
               <Image src={Logo} alt="Figmenta Logo" />
             </picture>
-            <span className="navbar__logo-text">is magic</span>
+            <span className="navbar__logo-text">
+              is <span id="typewriter"></span>
+            </span>
           </Link>
         </div>
         <div className="navbar__right-side">

@@ -72,6 +72,17 @@ header {
             line-height: 2.254vw;
             transition: 0.3s;
           }
+
+          #typewriter {
+            border-right: .05em solid;
+            animation: caret 1s steps(1) infinite;
+          }
+          
+          @keyframes caret {
+            50% {
+              border-color: transparent;
+            }
+          }
         }
       }
 
