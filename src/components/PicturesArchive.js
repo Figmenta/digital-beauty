@@ -249,7 +249,7 @@ const PicturesArchive = ({ pictures, categories }) => {
             opacity: 1,
             duration: 0.3,
             delay: 0.3,
-          })
+          }),
         ]);
       openTl.current.play();
     } else {
@@ -264,6 +264,7 @@ const PicturesArchive = ({ pictures, categories }) => {
           <div className="pictures-archive__column" key={columnIndex}>
             {column.map((picture, index) => (
               <div
+                key={index}
                 className="pictures-archive__picture"
                 onClick={(e) => {
                   openModal(e);
@@ -279,7 +280,6 @@ const PicturesArchive = ({ pictures, categories }) => {
                     }}
                   />
                   <picture
-                    key={index}
                     className="pictures-archive__image"
                     data-width={
                       picture.pictureFile.pictureFile.node.mediaDetails.width
