@@ -134,7 +134,6 @@ const PicturesArchive = ({ pictures, categories }) => {
               trigger: pic,
               toggleActions: "play none none reverse",
               start: "top bottom-=10%",
-              markers: true
             },
           }
         );
