@@ -2,7 +2,6 @@ import { gql } from "@apollo/client";
 import { client } from "@/lib/apolloClient";
 import Layout from "@/components/Layout";
 import PicturesArchive from "@/components/PicturesArchive";
-import TaxFilters from "@/components/TaxFilters";
 
 const GET_MENU = gql`
   query getMainMenu {
@@ -22,6 +21,7 @@ const GET_PICTURES = gql`
     pictures(first: 500) {
       nodes {
         title
+        content
         pictureFile {
           pictureFile {
             node {
@@ -33,8 +33,19 @@ const GET_PICTURES = gql`
               }
             }
           }
+          pictureLink
         }
         categories {
+          nodes {
+            name
+          }
+        }
+        styles {
+          nodes {
+            name
+          }
+        }
+        formats {
           nodes {
             name
           }
@@ -61,7 +72,7 @@ const GET_CATEGORIES = gql`
   }
 `;
 
-export default function Home({ title, menu, pictures, categories, error }) {
+export default function Home({ menu, pictures, categories, error }) {
   return (
     <Layout mainMenu={menu}>
       <PicturesArchive pictures={pictures} categories={categories} />
@@ -82,7 +93,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      title: "Holis",
       menu: mainMenuData.menu.menuItems.nodes,
       pictures: picturesData.pictures.nodes,
       categories: catData.categories.nodes,
